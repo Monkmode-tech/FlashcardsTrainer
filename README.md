@@ -36,6 +36,7 @@ The user interface consists of the following components:
 - Flashcards that can be tapped to edit content, swiped to delete, and flipped to reveal the answer.
 - Flashcards with different background colors based on their known/unknown status.
 - An alert dialog for confirming deletion of a flashcard.
+
 ![FlashcardsTrainer UI](Media/FlashcardsTrainer.gif)
 
 Above is a gif describing the FlashcardsTrainer app in action.
