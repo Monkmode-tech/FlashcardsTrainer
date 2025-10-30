@@ -1,0 +1,24 @@
+/* Spanish Localization */
+"app_title" = "Entrenador de Tarjetas";
+"add_card" = "Agregar Tarjeta";
+"edit_card" = "Editar Tarjeta";
+"back_label" = "Answer";
+"front" = "Anverso";
+"back" = "Reverso";
+"known" = "Conocida";
+"new" = "Nueva";
+"created" = "Creada";
+"modified" = "Modificada";
+"delete_card" = "Eliminar Tarjeta";
+"delete_confirm" = "¿Está seguro de que desea eliminar esta tarjeta?";
+"mark_all_known" = "Marcar Todas Conocidas";
+"reset_all" = "Restablecer Todas";
+"show_known_only" = "Mostrar Solo Conocidas";
+"all" = "Todas";
+"front_field" = "Campo anverso";
+"back_field" = "Campo reverso";
+"known_toggle" = "Alternar conocida";
+"timestamps" = "Tiempos";
+"done" = "Listo";
+"cancel" = "Cancelar";
+"language_picker" = "Idioma";

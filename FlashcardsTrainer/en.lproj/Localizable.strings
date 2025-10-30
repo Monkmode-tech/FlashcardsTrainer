@@ -1,0 +1,26 @@
+/* English Localization */
+"app_title" = "Flashcards Trainer";
+"add_card" = "Add Card";
+"edit_card" = "Edit Card";
+"back_label" = "Answer";
+"front" = "Front";
+"back" = "Back";
+"known" = "Known";
+"new" = "New";
+"created" = "Created";
+"modified" = "Modified";
+"delete_card" = "Delete Card";
+"delete_confirm" = "Are you sure you want to delete this card?";
+"mark_all_known" = "Mark All Known";
+"reset_all" = "Reset All";
+"show_known_only" = "Show Known Only";
+"all" = "All";
+"front_field" = "Front field";
+"back_field" = "Back field";
+"known_toggle" = "Known toggle";
+"timestamps" = "Timestamps";
+"done" = "Done";
+"cancel" = "Cancel";
+"created_format" = "Created: %@";
+"modified_format" = "Modified: %@";
+"language_picker" = "Language";
