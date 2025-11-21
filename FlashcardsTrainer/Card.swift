@@ -7,7 +7,7 @@ class Card {
     var front: String
     var back: String
     var isKnown: Bool
-    let createdAt: Date
+    var createdAt: Date
     var modifiedAt: Date
     
     init(front: String = "", back: String = "", isKnown: Bool = false) {

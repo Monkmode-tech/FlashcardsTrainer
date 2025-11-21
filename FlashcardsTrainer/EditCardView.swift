@@ -11,9 +11,10 @@ import SwiftData
 struct EditCardView: View {
     @Bindable var card: Card
     var isNew: Bool
-    var onSave: (Card) -> Void
+    var onSave: (() -> Void)? = nil
+    var onSaveOrCancel: (() -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
-    
+    @Environment(\.modelContext) private var modelContext
     @State private var showAlert = false
     
     var body: some View {
@@ -32,14 +33,14 @@ struct EditCardView: View {
                         .accessibilityLabel(LocalizedStringKey("known"))
                 }
                 Section {
-                    Text(String(localized: "created") + ": " + dateFormatter.string(from: card.createdAt))
+                    Text(String(localized: "created") + ": " + DateFormatter.flashcard.string(from: card.createdAt))
                         .font(.caption)
                         .foregroundColor(.secondary)
-                        .accessibilityLabel(String(localized: "created") + ": " + dateFormatter.string(from: card.createdAt))
-                    Text(String(localized: "modified") + ": " + dateFormatter.string(from: card.modifiedAt))
+                        .accessibilityLabel(String(localized: "created") + ": " + DateFormatter.flashcard.string(from: card.createdAt))
+                    Text(String(localized: "modified") + ": " + DateFormatter.flashcard.string(from: card.modifiedAt))
                         .font(.caption)
                         .foregroundColor(.secondary)
-                        .accessibilityLabel(String(localized: "modified") + ": " + dateFormatter.string(from: card.modifiedAt))
+                        .accessibilityLabel(String(localized: "modified") + ": " + DateFormatter.flashcard.string(from: card.modifiedAt))
                 }
             }
             .navigationTitle(isNew ? LocalizedStringKey("add_card") : LocalizedStringKey("edit_card"))
@@ -51,7 +52,10 @@ struct EditCardView: View {
                     .accessibilityLabel("Save")
                 }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(action: { dismiss() }) {
+                    Button(action: {
+                        onSaveOrCancel?()
+                        dismiss()
+                    }) {
                         Text("Cancel")
                     }
                     .accessibilityLabel("Cancel")
@@ -70,16 +74,20 @@ struct EditCardView: View {
             showAlert = true
             return
         }
-        // Only update modifiedAt, never set createdAt (it's immutable)
         card.modifiedAt = Date()
-        onSave(card)
+        if isNew {
+            modelContext.insert(card)
+        }
+        try? modelContext.save()
+        onSaveOrCancel?()
         dismiss()
     }
 }
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    formatter.timeStyle = .short
-    return formatter
-}()
+#Preview {
+    EditCardView(card: Card(), isNew: true)
+}
+
+#Preview {
+    EditCardView(card: Card(front: "Hello", back: "Hola", isKnown: false), isNew: false)
+}
